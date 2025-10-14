@@ -5,7 +5,7 @@ import myLinkedListRepresentation.ListNode;
 public class RemoveElement {
 
     public static void main(String[] args) {
-        ListNode listNode = removeNthFromEnd(ListNode.createSampleLinkedList(), 2);
+        ListNode listNode = removeNthFromEnd(ListNode.createSampleLinkedList(), 1);
         ListNode.printList(listNode);
     }
 
@@ -18,7 +18,7 @@ public class RemoveElement {
         ListNode first = dummy, second = dummy, prev = dummy;
 
         // Move `first` n steps ahead
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i < n; i++) {
             first = first.next;
             if (first == null) {
                 return null; // n is larger than the length of the list

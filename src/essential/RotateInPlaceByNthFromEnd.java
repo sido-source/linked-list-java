@@ -4,7 +4,13 @@ import myLinkedListRepresentation.ListNode;
 
 public class RotateInPlaceByNthFromEnd {
 
-    public void rotateInPlaceByNthFromEnd(ListNode head, int k) {
+    public static void main(String[] args) {
+        ListNode head = ListNode.createSampleLinkedList();
+        ListNode listNode = rotateInPlaceByNthFromEnd(head, 1);
+        ListNode.printList(listNode);
+    }
+
+    public static ListNode rotateInPlaceByNthFromEnd(ListNode head, int k) {
         ListNode tail = head;
         int n = 1;  // start from 1 since tail is already head
 
@@ -19,10 +25,11 @@ public class RotateInPlaceByNthFromEnd {
 
         // find new tail: at position n-k-1
         k = k % n;  // handle k > n
-        int stepsToNewTail = n - k - 1;
+        // int stepsToNewTail = n - k - 1; - if we count from 0 but I would rather count from 1
 
-        ListNode newTail = head;
-        for (int i = 0; i < stepsToNewTail; i++) {
+        int stepsToNewTail = n - k;
+        ListNode newTail = head; // as head i our first elem
+        for (int i = 1; i < stepsToNewTail; i++) {
             newTail = newTail.next;
         }
 
@@ -30,7 +37,7 @@ public class RotateInPlaceByNthFromEnd {
         newTail.next = null;
 
         // now newHead is rotated list head
-        head = newHead;
+        return newHead;
 
     }
 }
